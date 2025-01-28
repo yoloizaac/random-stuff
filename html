@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kirsiitne - My Eternal Valentine</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Parisienne&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rose-gold: #ffb3bf;
+            --deep-red: #c41e3a;
+            --vintage-white: #fff5e6;
+        }
+
+        body {
+            background: radial-gradient(circle at center, var(--rose-gold), var(--deep-red));
+            font-family: 'Parisienne', cursive;
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: #3a1a00;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            padding: 3rem 0;
+            position: relative;
+        }
+
+        .kirsiitne-name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4.5rem;
+            color: var(--vintage-white);
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073; }
+            to { text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6; }
+        }
+
+        .love-letter {
+            background: rgba(255, 245, 230, 0.95);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            margin: 2rem 0;
+            transform: rotate(-2deg);
+            transition: transform 0.3s ease;
+        }
+
+        .love-letter:hover {
+            transform: rotate(1deg);
+        }
+
+        .love-letter::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            border: 3px dashed var(--deep-red);
+            border-radius: 20px;
+            opacity: 0.3;
+        }
+
+        .interactive-heart {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            font-size: 3rem;
+            cursor: pointer;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .memory-item {
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .memory-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .memory-item::after {
+            content: '❤️';
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+        }
+
+        .love-meter {
+            height: 30px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+
+        .love-fill {
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, var(--deep-red), var(--rose-gold));
+            animation: fillLove 2s ease-out forwards;
+        }
+
+        @keyframes fillLove {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="kristine-name">K*insert name*</h1>
+            <p style="font-size: 1.5rem; color: var(--vintage-white); margin-top: 1rem;">
+                You're My Forever Valentine 💘
+            </p>
+        </header>
+
+        <div class="love-letter">
+            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">My Dearest dear,</h2>
+            <p style="font-size: 1.3rem; line-height: 1.6;">
+                From the moment our paths crossed, my world gained colors I never knew existed.<br>
+                Your laughter is my favorite melody, your smile my daily sunshine.<br>
+                In your eyes, I've found a home I never want to leave.<br>
+                Today and always, I choose you - my partner, my love, my forever.
+            </p>
+            <div class="love-meter">
+                <div class="love-fill"></div>
+            </div>
+        </div>
+
+        <div class="memory-grid">
+            <img src="https://source.unsplash.com/random/301x300?couple,love" class="memory-item" alt="Our Memory">
+            <img src="https://source.unsplash.com/random/302x300?romantic,dinner" class="memory-item" alt="Special Moment">
+            <img src="https://source.unsplash.com/random/303x300?adventure,couple" class="memory-item" alt="Our Adventure">
+        </div>
+
+        <div class="interactive-heart" onclick="createHearts()">💖</div>
+    </div>
+
+    <script>
+        function createHearts() {
+            for(let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.style.position = 'fixed';
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.top = `${Math.random() * 100}%`;
+                heart.style.fontSize = `${Math.random() * 30 + 20}px`;
+                heart.style.animation = `float ${Math.random() * 3 + 2}s ease-out`;
+                heart.innerHTML = ['💖', '💝', '💘', '💗'][Math.floor(Math.random() * 4)];
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 2000);
+            }
+        }
+
+        // Add romantic background music
+        window.addEventListener('click', () => {
+            const audio = new Audio('https://assets.mixkit.co/music/preview/mixkit-romantic-chopin-219.mp3');
+            audio.loop = true;
+            audio.play().catch(() => {});
+        });
+
+        // Add secret message
+        document.addEventListener('keypress', (e) => {
+            if(e.key === 'k') {
+                alert("*insert name*, you're the K to my heart ❤️");
+            }
+        });
+    </script>
+</body>
+</html>
