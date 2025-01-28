@@ -1,4 +1,295 @@
+<!-- 
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eternal Love | Valentine's Day</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        /* Advanced CSS */
+        :root {
+            --primary-color: #ff3f3f;
+            --secondary-color: #ff6b6b;
+            --accent-color: #ff4757;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(45deg, #ff3f3f, #ff6b6b);
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Animated Header */
+        .header {
+            text-align: center;
+            padding: 4rem 0;
+            perspective: 1000px;
+        }
+
+        .header h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            color: #fff;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            transform-style: preserve-3d;
+            animation: floatTitle 3s ease-in-out infinite;
+        }
+
+        @keyframes floatTitle {
+            0%, 100% { transform: translateY(0) rotateX(20deg); }
+            50% { transform: translateY(-20px) rotateX(20deg); }
+        }
+
+        /* 3D Card */
+        .card-wrapper {
+            perspective: 1000px;
+            margin: 2rem auto;
+            max-width: 600px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            transform-style: preserve-3d;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: rotateY(10deg) rotateX(5deg) translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2));
+            transform: rotate(45deg);
+        }
+
+        /* Message Styles */
+        .message {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #333;
+            margin: 2rem 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Interactive Elements */
+        .interactive-heart {
+            width: 100px;
+            height: 100px;
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .interactive-heart:hover {
+            transform: scale(1.2);
+        }
+
+        /* Photo Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        /* Advanced Animations */
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            15% { transform: scale(1.3); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.15); }
+            60% { transform: scale(1); }
+        }
+
+        .beating-heart {
+            animation: heartBeat 1.5s infinite;
+            color: var(--accent-color);
+        }
+
+        /* Custom Form */
+        .love-form {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .love-input {
+            padding: 1rem;
+            border: 2px solid var(--accent-color);
+            border-radius: 30px;
+            font-size: 1.1rem;
+            width: 300px;
+            margin: 1rem;
+        }
+
+        /* Progress Love Meter */
+        .love-meter {
+            height: 20px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .love-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            width: 0;
+            transition: width 2s ease;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .card {
+                margin: 1rem;
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><span class="beating-heart">💖</span> My Eternal Love <span class="beating-heart">💖</span></h1>
+        </div>
+
+        <div class="card-wrapper">
+            <div class="card" onclick="revealSurprise()">
+                <h2 style="font-family: 'Pacifico', cursive; color: var(--accent-color);">To My Beloved,</h2>
+                <p class="message">
+                    Like stars that dance in midnight skies,<br>
+                    Your love illuminates my life.<br>
+                    Through every season, every phase,<br>
+                    You're the rhythm to my rhyme.
+                </p>
+                <div class="love-form">
+                    <input type="text" class="love-input" placeholder="Enter Your Name" id="loverName">
+                    <button class="love-button" onclick="personalizeMessage()">💞 Make It Special 💞</button>
+                </div>
+                <div id="personalMessage" class="secret-message"></div>
+                <div class="love-meter">
+                    <div class="love-progress" id="loveProgress"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="gallery">
+            <img src="https://source.unsplash.com/random/201x200?love" class="gallery-item" alt="Memory 1">
+            <img src="https://source.unsplash.com/random/202x200?romantic" class="gallery-item" alt="Memory 2">
+            <img src="https://source.unsplash.com/random/203x200?couple" class="gallery-item" alt="Memory 3">
+        </div>
+
+        <div class="interactive-heart" onclick="createHeartBurst()">💝</div>
+    </div>
+
+    <script>
+        // Advanced Animations
+        function createHeartBurst() {
+            for(let i = 0; i < 50; i++) {
+                const heart = document.createElement('div');
+                heart.style.position = 'fixed';
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.top = `${Math.random() * 100}%`;
+                heart.style.fontSize = `${Math.random() * 30 + 20}px`;
+                heart.style.animation = `float ${Math.random() * 3 + 2}s ease-out`;
+                heart.innerHTML = '💖';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 2000);
+            }
+        }
+
+        // Personalized Message
+        function personalizeMessage() {
+            const name = document.getElementById('loverName').value || 'My Love';
+            const messages = [
+                `${name}, you're my forever and always 🌹`,
+                `To ${name}, my soulmate in every way 💑`,
+                `${name}, our love story is my favorite 💍`,
+                `With ${name}, every moment is magic ✨`
+            ];
+            
+            document.getElementById('personalMessage').innerHTML = 
+                messages[Math.floor(Math.random() * messages.length)];
+            document.getElementById('personalMessage').style.display = 'block';
+            
+            // Animate progress bar
+            document.getElementById('loveProgress').style.width = '100%';
+        }
+
+        // Interactive Background
+        function createFloatingHearts() {
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.style.position = 'fixed';
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.fontSize = `${Math.random() * 20 + 10}px`;
+                heart.style.animation = `float ${Math.random() * 5 + 3}s linear`;
+                heart.innerHTML = ['💖', '💝', '💘', '💗'][Math.floor(Math.random() * 4)];
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 5000);
+            }, 300);
+        }
+
+        // Initialize
+        window.addEventListener('load', () => {
+            createFloatingHearts();
+            // Add background music
+            const audio = new Audio('https://assets.mixkit.co/music/preview/mixkit-romantic-chopin-219.mp3');
+            audio.loop = true;
+            audio.play().catch(() => {}); // Handle autoplay restrictions
+        });
+    </script>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,6 +306,205 @@
         body {
             background: radial-gradient(circle at center, var(--rose-gold), var(--deep-red));
             font-family: 'Parisienne', cursive;
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: #3a1a00;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            padding: 3rem 0;
+            position: relative;
+        }
+
+        .kirsiitne-name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4.5rem;
+            color: var(--vintage-white);
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073; }
+            to { text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6; }
+        }
+
+        .love-letter {
+            background: rgba(255, 245, 230, 0.95);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            margin: 2rem 0;
+            transform: rotate(-2deg);
+            transition: transform 0.3s ease;
+        }
+
+        .love-letter:hover {
+            transform: rotate(1deg);
+        }
+
+        .love-letter::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            border: 3px dashed var(--deep-red);
+            border-radius: 20px;
+            opacity: 0.3;
+        }
+
+        .interactive-heart {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            font-size: 3rem;
+            cursor: pointer;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .memory-item {
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .memory-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .memory-item::after {
+            content: '❤️';
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+        }
+
+        .love-meter {
+            height: 30px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+
+        .love-fill {
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, var(--deep-red), var(--rose-gold));
+            animation: fillLove 2s ease-out forwards;
+        }
+
+        @keyframes fillLove {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="kristine-name">Kristine</h1>
+            <p style="font-size: 1.5rem; color: var(--vintage-white); margin-top: 1rem;">
+                You're My Forever Valentine 💘
+            </p>
+        </header>
+
+        <div class="love-letter">
+            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">My Dearest Kristine,</h2>
+            <p style="font-size: 1.3rem; line-height: 1.6;">
+                From the moment our paths crossed, my world gained colors I never knew existed.<br>
+                Your laughter is my favorite melody, your smile my daily sunshine.<br>
+                In your eyes, I've found a home I never want to leave.<br>
+                Today and always, I choose you - my partner, my love, my forever.
+            </p>
+            <div class="love-meter">
+                <div class="love-fill"></div>
+            </div>
+        </div>
+
+        <div class="memory-grid">
+            <img src="https://source.unsplash.com/random/301x300?couple,love" class="memory-item" alt="Our Memory">
+            <img src="https://source.unsplash.com/random/302x300?romantic,dinner" class="memory-item" alt="Special Moment">
+            <img src="https://source.unsplash.com/random/303x300?adventure,couple" class="memory-item" alt="Our Adventure">
+        </div>
+
+        <div class="interactive-heart" onclick="createHearts()">💖</div>
+    </div>
+
+    <script>
+        function createHearts() {
+            for(let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.style.position = 'fixed';
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.top = `${Math.random() * 100}%`;
+                heart.style.fontSize = `${Math.random() * 30 + 20}px`;
+                heart.style.animation = `float ${Math.random() * 3 + 2}s ease-out`;
+                heart.innerHTML = ['💖', '💝', '💘', '💗'][Math.floor(Math.random() * 4)];
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 2000);
+            }
+        }
+
+        // Add romantic background music
+        window.addEventListener('click', () => {
+            const audio = new Audio('https://assets.mixkit.co/music/preview/mixkit-romantic-chopin-219.mp3');
+            audio.loop = true;
+            audio.play().catch(() => {});
+        });
+
+        // Add secret message
+        document.addEventListener('keypress', (e) => {
+            if(e.key === 'k') {
+                alert("Kris, you're the K to my heart ❤️");
+            }
+        });
+    </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kr - My Eternal Valentine</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Parisienne&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rose-gold: #ffb3bf;
+            --deep-red: #c41e3a;
+            --vintage-white: #fff5e6;
+        }
+
+        body {
+            background: radial-gradient(circle at center, var(--rose-gold), var(--deep-red));
+            font-family: 'Poppins', cursive;
             min-height: 100vh;
             overflow-x: hidden;
             color: #3a1a00;
